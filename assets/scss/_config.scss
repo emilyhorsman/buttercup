@@ -1,0 +1,15 @@
+$images: "../images";
+
+$body-bg:   lighten(#2a2d41, 76%);
+$gray-dark: darken(#2a2d41, 20%);
+$gray:      #2a2d41;
+
+$font-family-sans-serif: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-size-root: 10px;
+$font-size-base: 2rem;
+$font-size-lg: 1.25 * $font-size-base;
+$font-size-sm: 0.85 * $font-size-base;
+$font-size-xs: 0.75 * $font-size-base;
+$line-height: 1.7;
+
+$max-width: 1440px;

@@ -1,0 +1,19 @@
+{
+  "name": "buttercup",
+  "version": "0.1.0",
+  "authors": [
+    "Emily Horsman <me@emilyhorsman.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha",
+    "jquery.scrollTo": "~2.1.1"
+  }
+}

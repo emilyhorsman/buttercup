@@ -1,0 +1,161 @@
+$seam-gradient: linear-gradient(to right, rgba(0,0,0,0.4), transparent, rgba(0,0,0,0.4));
+$min-header-height: 6rem;
+$full-header-height: 20rem;
+$header-font-size: 3.5rem;
+$nav-font-size: 1.5rem;
+header {
+  &:before {
+    display: block;
+    content: '';
+    width: 100%; height: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+
+    background-image: url(#{$images}/space.jpg), $seam-gradient;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    -webkit-filter: brightness(120%);
+    filter: brightness(120%);
+    transition: all 0.25s ease-in;
+  }
+
+  &:hover {
+    &:before {
+      -webkit-filter: brightness(150%);
+      filter: brightness(150%);
+    }
+  }
+
+  position: relative;
+  background-color: #001;
+  height: $full-header-height;
+  width: 100%;
+
+  h1 {
+    position: absolute;
+    top: $min-header-height;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    color: white;
+
+    a {
+      color: inherit;
+      font-size: $header-font-size;
+      font-weight: 100;
+      line-height: $full-header-height - $min-header-height;
+      text-decoration: none;
+
+      &.locked {
+        position: fixed;
+        top: 0;
+        line-height: $min-header-height;
+
+        // These values are a cheat to get fixed position centering easily.
+        // As long as this is larger than the header text it will work fine.
+        width: 400px;
+        margin-left: -200px;
+      }
+
+      &:hover {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .content-jump {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s, visibility, 1s;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 15rem;
+    margin: ($min-header-height - 1.5rem) / 2 0;
+    margin-left: -7.5rem;
+    text-align: center;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    background-color: white;
+    color: $gray-dark;
+
+    &:hover {
+      background-color: $gray-light;
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &.locked {
+    position: fixed;
+    top: $min-header-height - $full-header-height;
+  }
+
+  &.minimal {
+    h1 a {
+      transition: opacity 0.5s, visibility, 0.5s;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .content-jump {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+
+  ul {
+    text-align: right;
+    margin: 0 auto;
+    padding: 0 2rem;
+    font-size: 0;
+    max-width: $max-width;
+
+    li {
+      display: inline-block;
+      color: lighten(#2A2D41, 70%);
+      animation: fadein 1s;
+      animation-fill-mode: both;
+      &:nth-child(1) { animation-delay: 1.0s; }
+      &:nth-child(2) { animation-delay: 0.5s; }
+
+      &:hover {
+        color: white;
+      }
+
+      &:nth-last-child(n+2) {
+        a:after {
+          content: '|';
+          padding: 0 1em;
+          color: #666;
+        }
+      }
+
+      a {
+        display: inline-block;
+        transition: all 0.2s;
+        color: inherit;
+        text-decoration: none;
+        font-size: $nav-font-size;
+        line-height: $min-header-height;
+        font-weight: 200;
+        letter-spacing: 2px;
+        &:hover {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

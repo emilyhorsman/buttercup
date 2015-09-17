@@ -1,0 +1,10 @@
+js:
+  -
+    global: jQuery
+    cdn: //code.jquery.com/jquery-2.1.4.min.js
+    src: jquery.min.js
+  -
+    src: main.js
+css:
+  -
+    src: main.css

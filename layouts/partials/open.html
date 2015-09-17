@@ -1,0 +1,14 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ .Site.Title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ range .Site.Data.assets.css }}
+    <link href="/css/{{ .src }}" rel="stylesheet">
+    {{ end }}
+  </head>
+
+  <body>
+    <a href="#main" id="skip">Skip to main content</a>

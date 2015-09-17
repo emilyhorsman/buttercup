@@ -1,0 +1,9 @@
+{{ range .Site.Data.assets.js }}
+  {{ if .cdn }}
+    <script src="{{ .cdn }}"></script>
+    {{ print "<script>window." .global " || document.write('<script src=\"/js/" .src "\">\\x3C/script>');</script>" | safeHTML }}
+  {{ else }}
+    <script src="/js/{{ .src }}"></script>
+  {{ end }}
+{{ end }}
+</body></html>
