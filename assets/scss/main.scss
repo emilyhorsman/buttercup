@@ -9,6 +9,8 @@
 @import "tooltips";
 @import "skip-link";
 @import "header";
+@import "footer";
+@import "pride";
 
 #logo {
   background-repeat: no-repeat;
@@ -26,7 +28,7 @@
 
 main {
   background: white;
-  max-width: 960px;
+  max-width: $content-width;
   margin-left: auto;
   margin-right: auto;
   padding: 3rem;

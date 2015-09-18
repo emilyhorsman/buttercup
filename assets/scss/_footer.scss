@@ -1,0 +1,33 @@
+$footer-height: 12rem;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: $footer-height;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  font-size: 0.9em;
+  background: white;
+  padding-top: 1rem;
+  overflow: hidden;
+
+  > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $content-width;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -8,4 +8,11 @@
   {{ end }}
 </main>
 
+<footer>
+  <div>
+    <p>{{ $.Site.Params.footer_md | markdownify }}</p>
+    {{ partial "meta.html" . }}
+  </div>
+</footer>
+
 {{ partial "close.html" . }}
