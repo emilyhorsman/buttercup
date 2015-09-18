@@ -1,0 +1,36 @@
+$standard-tooltip-width: 30rem;
+.tooltip {
+  position: relative;
+  color: lighten($body-color, 10%);
+
+  &:before, &:after {
+    font-size: 0.75em;
+  }
+
+  &:before {
+    content: attr(data-tip);
+    position: absolute;
+    left: 0;
+    bottom: $font-size-base * $line-height;
+    display: none;
+    background-color: $gray;
+    color: white;
+    padding: 1.5rem;
+    width: $standard-tooltip-width;
+    margin-left: $standard-tooltip-width * -0.5;
+    text-align: center;
+  }
+
+  &:hover {
+    cursor: help;
+    &:before {
+      display: block;
+    }
+  }
+
+  &:after {
+    content: '\2731';
+    vertical-align: super;
+    color: $link-color;
+  }
+}
