@@ -1,4 +1,4 @@
-$footer-height: 12rem;
+$footer-height: 6rem;
 
 html {
   position: relative;
@@ -7,6 +7,7 @@ html {
 
 body {
   margin-bottom: $footer-height;
+  padding-bottom: 3rem;
 }
 
 footer {
@@ -14,10 +15,15 @@ footer {
   bottom: 0;
   width: 100%;
   height: $footer-height;
-  font-size: 0.9em;
-  background: white;
-  padding-top: 1rem;
+  font-size: 0.8em;
+  background: $gray;
+  color: white;
   overflow: hidden;
+  box-shadow: inset 1px 0 3px black;
+
+  a {
+    color: lighten($link-color, 30%);
+  }
 
   > div {
     position: absolute;
@@ -27,7 +33,10 @@ footer {
     width: $content-width;
 
     p {
-      margin-bottom: 0;
+      float: left;
+      margin: 0;
+      max-width: 60%;
+      overflow: break-word;
     }
   }
 }
