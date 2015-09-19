@@ -2,6 +2,11 @@
   'use strict';
 
   window.helpers = {
+  each: function(array, fn) {
+    for (var i = 0; i < array.length; i++)
+      fn(array[i], i);
+  },
+
   outerHeight: function(elm) {
     var height = elm.offsetHeight;
     var style = getComputedStyle(elm);
