@@ -57,4 +57,8 @@
     });
   }
   window.addEventListener('scroll', scrollStateMachine, false);
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.content-jump')[0].style.display = 'block';
+  }, false);
 })();
