@@ -47,15 +47,22 @@ gulp.task('bower', function() {
   });
 });
 
-gulp.task('js', function() {
+gulp.task('js:lint', function() {
+  gulp.src('./assets/js/**/*.js')
+    .pipe($.jshint({
+      browser: true
+    }))
+    .pipe($.jshint.reporter('default'));
+});
+
+gulp.task('js:concatenate', function() {
   gulp.src(js_src.concat('./assets/js/**/*.js'))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
       .pipe($.concat('main.js'))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('default'))
     .pipe(gulp.dest('./static/js'));
 });
+gulp.task('js', ['js:lint', 'js:concatenate']);
 gulp.task('js:watch', function() { gulp.watch('./assets/js/**/*.js', ['js']); });
 
 gulp.task('all', ['bower', 'sass', 'js']);
