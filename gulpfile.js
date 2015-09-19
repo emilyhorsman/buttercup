@@ -52,6 +52,8 @@ gulp.task('js', function() {
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
       .pipe($.concat('main.js'))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
+    .pipe($.jshint())
+    .pipe($.jshint.reporter('default'))
     .pipe(gulp.dest('./static/js'));
 });
 gulp.task('js:watch', function() { gulp.watch('./assets/js/**/*.js', ['js']); });
