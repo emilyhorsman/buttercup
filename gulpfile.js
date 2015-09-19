@@ -14,7 +14,7 @@ var $       = require('gulp-load-plugins')({
 // Don't concatenate jQuery and Bootstrap with our JS.
 var js_src = wiredep({
   exclude: [ 'jquery.js', 'bootstrap' ]
-}).js;
+}).js || [];
 
 // Wrap the src function with plumber for easy error handling.
 gulp._src = gulp.src;

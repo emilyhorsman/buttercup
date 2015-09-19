@@ -1,4 +1,4 @@
-{{ range .Site.Data.assets.js }}
+{{ range where .Site.Data.assets.js "disabled" "ne" "nil" }}
   {{ if .cdn }}
     <script src="{{ .cdn }}"></script>
     {{ print "<script>window." .global " || document.write('<script src=\"/js/" .src "\">\\x3C/script>');</script>" | safeHTML }}
