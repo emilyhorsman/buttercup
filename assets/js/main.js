@@ -52,7 +52,7 @@
     lockAtThreshold({
       y: y,
       elm: header,
-      threshold: headerHeight,
+      threshold: headerHeight + 40,
       cls: 'minimal'
     });
   }
