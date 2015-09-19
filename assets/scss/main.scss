@@ -29,6 +29,7 @@
   animation-name: bounceInDown;
   animation-duration: 1s;
   animation-delay: 0.5s;
+  animation-fill-mode: both;
 }
 
 main {
@@ -41,7 +42,7 @@ main {
 
 html.no-js {
   nav {
-    background-color: #2a2d41;
+    background-color: hsla(0, 0%, 0%, 0.7);
   }
 }
 
