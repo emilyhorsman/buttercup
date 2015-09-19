@@ -13,7 +13,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "v4.0.0-alpha",
-    "jquery.scrollTo": "~2.1.1"
+    "bootstrap": "v4.0.0-alpha"
   }
 }
