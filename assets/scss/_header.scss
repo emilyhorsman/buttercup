@@ -40,6 +40,7 @@ header {
     width: 100%;
     text-align: center;
     color: white;
+    font-weight: 100;
 
     a {
       color: inherit;
@@ -151,7 +152,7 @@ nav {
         text-decoration: none;
         font-size: $nav-font-size;
         line-height: $min-header-height;
-        font-weight: 200;
+        font-weight: 100;
         letter-spacing: 2px;
         &:hover {
           color: inherit;
