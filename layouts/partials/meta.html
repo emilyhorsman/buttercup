@@ -1,5 +1,5 @@
 <ul class="pride" aria-hidden="true" role="presentation">
-  {{ range $.Site.Data.flags.sources }}
-  <li style="background-image: url(/images/{{ . }});"></li>
+  {{ range $.Site.Data.flags.svgs }}
+  <li>{{ . | safeHTML }}</li>
   {{ end }}
 </ul>
