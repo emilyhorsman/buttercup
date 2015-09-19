@@ -1,53 +1,60 @@
-document.documentElement.className = document.documentElement.className.replace(/\bno\-js\b/, '');
+(function() {
+  'use strict';
+  var $ = window.helpers;
 
-$(function() {
-  $.fn.lockAtThreshold = function(opts) {
-    var c = (typeof opts.state === 'undefined') ? 'locked' : opts.state;
+  document.documentElement.className = document.documentElement.className.replace(/\bno\-js\b/, '');
 
-    if ($(window).scrollTop() > opts.threshold) {
-      if (this.hasClass(c)) return;
-
+  /*
+   * Add a state class to an element with option padding to the body element
+   * if our scrolling y pos has exceeded a given threshold. Remove the class
+   * otherwise.
+   */
+  function lockAtThreshold(opts) {
+    var cls = (typeof opts.cls === 'undefined') ? 'locked' : opts.cls;
+    var body = document.body;
+    if (opts.y > opts.threshold) {
+      if ($.checkClass(opts.elm, cls)) return;
       if (opts.bodyPadding) {
-        $('body').css('padding-top', '+=' + opts.bodyPadding);
+        body.style.paddingTop = (parseInt(body.style.paddingTop || 0) + opts.bodyPadding) + 'px';
       }
-
-      this.addClass(c);
-    } else {
-      if (!this.hasClass(c)) return;
-
-      if (opts.bodyPadding) {
-        $('body').css('padding-top', '-=' + opts.bodyPadding);
-      }
-
-      this.removeClass(c);
+      opts.elm.className += ' ' + cls;
+      return;
     }
-  };
 
-  function checkMenuCompactState() {
-    var $a = $('header h1 a');
-    $a.lockAtThreshold({
-      threshold: $a.position().top + $a.outerHeight() + 8
+    if (!$.checkClass(opts.elm, cls)) return;
+
+    if (opts.bodyPadding)
+      body.style.paddingTop = (parseInt(body.style.paddingTop || 0) - opts.bodyPadding) + 'px';
+
+    $.removeClass(opts.elm, cls);
+  }
+
+  function scrollStateMachine(e) {
+    var y = $.scrollY();
+    var header = document.getElementsByTagName('header')[0];
+    var anchor = header.querySelectorAll('h1 a')[0];
+    var anchorHeight = $.outerHeight(anchor);
+    var headerHeight = header.offsetHeight;
+
+    lockAtThreshold({
+      y: y,
+      elm: anchor,
+      threshold: anchor.offsetTop + anchorHeight
     });
 
-    var $header = $('header');
-    var headerHeight = 200;
-    $header.lockAtThreshold({
-      threshold: headerHeight - $a.outerHeight(),
+    lockAtThreshold({
+      y: y,
+      elm: header,
+      threshold: headerHeight - anchorHeight,
       bodyPadding: headerHeight
     });
 
-    $header.lockAtThreshold({
+    lockAtThreshold({
+      y: y,
+      elm: header,
       threshold: headerHeight,
-      state: 'minimal'
+      cls: 'minimal'
     });
   }
-  checkMenuCompactState();
-  $(window).scroll(checkMenuCompactState);
-
-  $(function() {
-    $('a.content-jump').click(function(e) {
-      e.preventDefault();
-      $(window).stop(true).scrollTo(this.hash, { duration: 500, interrupt:true });
-    });
-  });
-});
+  window.addEventListener('scroll', scrollStateMachine, false);
+})();
