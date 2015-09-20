@@ -2,7 +2,6 @@
 
 var opts = require('yargs')
   .option('sourcemaps', { default: true })
-  .option('minify', { default: false })
   .argv;
 
 var path    = require('path')
@@ -23,22 +22,6 @@ gulp.src = function() {
   return gulp._src.apply(gulp, arguments).pipe($.plumber());
 };
 
-gulp.task('sass', function() {
-  gulp.src('./assets/scss/**/*.scss')
-    .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
-      .pipe($.sass({
-        includePaths: './assets/vendor',
-      }))
-    .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
-    .pipe($.gif(opts.minify, $.minifyCss({
-      compatibility: 'ie8',
-      processImport: false,
-    })))
-    .pipe($.size({ showFiles: true }))
-    .pipe(gulp.dest('./static/css'));
-});
-gulp.task('sass:watch', function() { gulp.watch('./assets/scss/**/*.scss', ['sass']); });
-
 // Move bower packages to static.
 gulp.task('bower', function() {
   var overrides = { "jquery": { "main": ["dist/jquery.min.js"] } };
@@ -53,6 +36,29 @@ gulp.task('bower', function() {
   });
 });
 
+gulp.task('sass', function(callback) {
+  gulp.src('./assets/scss/**/*.scss')
+    .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
+      .pipe($.sass({
+        includePaths: './assets/vendor',
+      }))
+    .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
+    .pipe(gulp.dest('./static/css'))
+    .on('end', callback);
+});
+
+gulp.task('sass:minify', ['sass'], function() {
+  gulp.src('./static/css/*.css')
+    .pipe($.minifyCss({
+      compatibility: 'ie8',
+      processImport: false,
+    }))
+    .pipe(gulp.dest('./static/css'))
+    .pipe($.size({ showFiles: true }));
+});
+gulp.task('sass:watch', function() { gulp.watch('./assets/scss/**/*.scss', ['sass']); });
+
+
 gulp.task('js:lint', function() {
   gulp.src('./assets/js/**/*.js')
     .pipe($.jshint({
@@ -61,17 +67,26 @@ gulp.task('js:lint', function() {
     .pipe($.jshint.reporter('default'));
 });
 
-gulp.task('js:concatenate', function() {
+gulp.task('js:concatenate', function(callback) {
   gulp.src(js_src.concat('./assets/js/**/*.js'))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
       .pipe($.concat('main.js'))
-      .pipe($.size({ showFiles: true }))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
-    .pipe(gulp.dest('./static/js'));
+    .pipe(gulp.dest('./static/js'))
+    .on('end', callback);
+});
+
+gulp.task('js:uglify', ['js'], function() {
+  gulp.src('./static/js/*.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('./static/js'))
+    .pipe($.size({ showFiles: true }));
 });
 gulp.task('js', ['js:lint', 'js:concatenate']);
 gulp.task('js:watch', function() { gulp.watch('./assets/js/**/*.js', ['js']); });
 
-gulp.task('all', ['bower', 'sass', 'js']);
+gulp.task('all', ['sass', 'js']);
 gulp.task('watch', ['bower', 'sass:watch', 'js:watch']);
 gulp.task('default', ['all']);
+
+gulp.task('production', ['sass:minify', 'js:uglify']);
