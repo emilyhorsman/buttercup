@@ -2,6 +2,7 @@
 
 var opts = require('yargs')
   .option('sourcemaps', { default: true })
+  .option('minify', { default: false })
   .argv;
 
 var path    = require('path')
@@ -29,6 +30,10 @@ gulp.task('sass', function() {
         includePaths: './assets/vendor',
       }))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
+    .pipe($.gif(opts.minify, $.minifyCss({
+      compatibility: 'ie8',
+      processImport: false,
+    })))
     .pipe(gulp.dest('./static/css'));
 });
 gulp.task('sass:watch', function() { gulp.watch('./assets/scss/**/*.scss', ['sass']); });
