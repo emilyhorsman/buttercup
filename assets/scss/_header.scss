@@ -1,78 +1,89 @@
-$nav-font-size: 2rem;
-$nav-animate-time: 0.3s;
-$header-font-size: 3rem;
-$header-color: $gray;
-$header-hover: black;
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+$nav-shadow: 1px 0 3px rgba(0, 0, 0, 0.8);
+$nav-height: 5rem;
+$nav-font-size: 1.75rem;
+$header-font-size: 2rem;
+$header-height: 6rem;
+$header-font-size: 2.5rem;
+$fg: white;
+$inner-padding: 2rem;
 header {
-  padding: 1rem $content-padding;
-  max-width: $content-width;
-  margin: 0 auto;
-  h1 {
-    font-size: $header-font-size;
-    margin-bottom: 1rem;
-    line-height: 1;
-    a:hover {
-      text-decoration: none;
-    }
-  }
+  position: relative;
+  background-color: $blue;
+  height: $nav-height + $header-height;
+  box-shadow: $nav-shadow;
 
   a {
-    color: $header-color;
-    &:hover {
-      color: $header-hover;
-    }
+    color: inherit; text-decoration: none;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    font-size: 0;
-    margin-bottom: 0;
-    li {
-      display: inline-block;
-      animation-name: fadeIn;
-      animation-duration: $nav-animate-time;
-      animation-delay: 0.5s;
-      animation-fill-mode: both;
-      @for $i from 6 through 1 {
-        &:nth-last-child(#{$i}) { animation-delay: 0.5s + $nav-animate-time * $i; }
-      }
-
-      &:after {
-        content: '-';
-        color: darken($body-bg, 40%);
-        font-size: $nav-font-size * 0.9;
-      }
-
-      a {
-        font-size: $nav-font-size;
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      &:first-child a { padding-left: 0; }
-      &:last-child {
-        &:after { display: none; }
-        a { padding-right: 0; }
-      }
-    }
-  }
-
-  @include media-breakpoint-up(sm) {
+  nav {
     @include clearfix;
-    h1 {
-      float: left;
-      margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0; right: 0;
+    background-color: $red;
+    box-shadow: $nav-shadow;
+    > div {
+      height: $nav-height;
+      color: $fg;
+      max-width: $max-width;
+      margin: 0 auto;
+      padding: 0 $inner-padding;
     }
 
-    nav {
-      float: right;
-      $f: $nav-font-size * 0.75;
-      ul li a {
-        font-size: $f;
-        padding-top: ($header-font-size - $f) / 2;
-        padding-bottom: ($header-font-size - $f) / 2;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0;
+      li {
+
+        display: inline;
+        color: $fg;
+        font-size: $nav-font-size;
+        line-height: $nav-height;
+        margin: 0;
+        padding: 0 1rem;
+        &:first-child { padding-left: 0; }
       }
+
+      &.social li {
+        span {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
+    #main-nav { float: left; }
+    #social-nav { float: right; }
+  }
+
+  > div {
+    position: relative;
+    top: $nav-height;
+    max-width: $max-width;
+    margin: 0 auto;
+    height: $header-height;
+    padding: 0 $inner-padding;
+    h1 {
+      margin: 0; padding: 0;
+      line-height: $header-height;
+      font-size: $header-font-size;
+      color: $fg;
+      float: left;
+    }
+
+    > div {
+      float: right;
+      margin-top: 1.5rem;
+      margin-right: 2rem;
+      width: 7rem; height: 7rem;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 50%;
+      border: 0.4rem solid $blue;
     }
   }
 }
