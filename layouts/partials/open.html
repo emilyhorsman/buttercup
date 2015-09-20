@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ if ne .Title "Home" }}{{ .Title }} | {{ end }}{{ $.Site.Title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ partial "opengraph.html" . }}
+
     {{ range $.Site.Data.assets.css }}
     <link href="/css/{{ .src }}" rel="stylesheet">
     {{ end }}
