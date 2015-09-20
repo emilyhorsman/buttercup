@@ -3,7 +3,7 @@
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/normalize";
 @import "bootstrap/scss/reboot";
-@import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400);
 
 @import "common";
 @import "bounce-in-down";
@@ -37,12 +37,5 @@ main {
   max-width: $content-width;
   margin-left: auto;
   margin-right: auto;
-  padding: 3rem;
+  padding: $content-padding;
 }
-
-html.no-js {
-  nav {
-    background-color: hsla(0, 0%, 0%, 0.7);
-  }
-}
-
