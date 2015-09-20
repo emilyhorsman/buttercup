@@ -1,17 +1,11 @@
+{{ range where $.Data.Pages "Title" "Home" }}
 {{ partial "open.html" . }}
 {{ partial "header.html" . }}
 
 <main id="top">
-  {{ range where .Data.Pages "Title" "Home" }}
-    {{ .Content }}
-  {{ end }}
+  {{ .Content }}
 </main>
 
-<footer>
-  <div>
-    <div class="left"><p>{{ $.Site.Params.footer_md | markdownify }}</p></div>
-    <div class="right">{{ partial "meta.html" . }}</div>
-  </div>
-</footer>
-
+{{ partial "footer.html" . }}
 {{ partial "close.html" . }}
+{{ end }}

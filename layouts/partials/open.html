@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ .Site.Title }}</title>
+    <title>{{ $.Site.Title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{ range .Site.Data.assets.css }}
+    {{ range $.Site.Data.assets.css }}
     <link href="/css/{{ .src }}" rel="stylesheet">
     {{ end }}
 
-    {{ range where .Site.Data.assets.js "disabled" "ne" "nil" }}
+    {{ range where $.Site.Data.assets.js "disabled" "ne" "nil" }}
       {{ if .cdn }}
         <script src="{{ .cdn }}"></script>
         {{ print "<script>window." .global " || document.write('<script src=\"/js/" .src "\">\\x3C/script>');</script>" | safeHTML }}

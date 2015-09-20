@@ -9,9 +9,10 @@
     <a href="#" id="open-hamburger"><i class="fa fa-bars"></i><span> Open Menu</span></a>
     <div>
       <ul id="main-nav" class="main">
-        <li class="selected"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        {{ $cur := . }}
+        {{ range $.Site.Menus.main }}
+        <li{{ if $cur.IsMenuCurrent "main" . }} class="selected"{{ end}}><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
       </ul>
 
       <ul id="social-nav" class="social">
