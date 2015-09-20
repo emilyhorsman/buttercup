@@ -36,12 +36,34 @@ header {
     left: 0; right: 0;
     background-color: $red;
     box-shadow: $nav-shadow;
+    a#open-hamburger {
+      display: none;
+      color: white;
+      padding: $inner-padding;
+      font-size: 3rem;
+      span {
+        font-size: 0;
+      }
+
+      @include media-breakpoint-down(xs) {
+        display: inline;
+      }
+    }
+
     > div {
+      overflow: hidden;
       height: $nav-height;
       color: $fg;
       max-width: $max-width;
       margin: 0 auto;
       padding: 0 $inner-padding;
+
+      @include media-breakpoint-down(xs) {
+        height: 0;
+        &.show {
+          height: auto;
+        }
+      }
     }
 
     ul {
@@ -115,13 +137,15 @@ header {
       animation-fill-mode: both;
       float: right;
       margin-top: 1.5rem;
-      margin-right: 2rem;
       width: 7rem; height: 7rem;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
       border-radius: 50%;
       border: 0.4rem solid $blue;
+      @include media-breakpoint-up(sm) {
+        margin-right: 2rem;
+      }
     }
   }
 }
