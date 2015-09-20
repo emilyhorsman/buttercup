@@ -19,7 +19,7 @@
     elm.className = elm.className.replace(new RegExp('(^|\\b)' + cls.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
   },
 
-  checkClass: function(elm, cls) {
+  hasClass: function(elm, cls) {
     return (' ' + elm.className + ' ').indexOf(' ' + cls + ' ') > -1;
   },
 

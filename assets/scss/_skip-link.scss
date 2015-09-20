@@ -1,14 +1,17 @@
-#skip {
-  position: absolute;
-  left: -10000px;
-  top: auto;
+#scroll-to-top {
+  position: fixed;
+  left: -100px;
+  top: 15rem;
   width: 1px;
   height: 1px;
   overflow: hidden;
+  color: black;
+  text-decoration: none;
+  transition: left 0.1s ease-in;
 
-  &:focus {
-    top: 0;
-    left: 0;
+  &:focus,
+  &.show {
+    left: 1rem;
     display: inline-block;
     width: auto;
     height: auto;
