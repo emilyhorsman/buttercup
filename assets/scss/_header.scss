@@ -8,8 +8,14 @@ $header-font-size: 2.5rem;
 $fg: white;
 $inner-padding: 2rem;
 $nav-border-width: 0.3rem;
+body {
+  padding-top: $nav-height + $header-height + $content-padding;
+}
+
 header {
-  position: relative;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2;
   background-color: $blue;
   height: $nav-height + $header-height;
   box-shadow: $nav-shadow;
@@ -64,7 +70,7 @@ header {
 
       &.social li {
         span {
-          margin-left: 0.5rem;
+          font-size: 0;
         }
       }
     }
