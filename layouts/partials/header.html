@@ -1,4 +1,4 @@
-<a href='#top' id='scroll-to-top'><i class="fa fa-chevron-circle-up"></i><span> Jump to top</span></a>
+<a href='#top' id='scroll-to-top'><i class="icon icon-chevron-circle-up"></i><span> Jump to top</span></a>
 <header>
   <div>
     <h1><a href="/">{{ $.Site.Title }}</a></h1>
@@ -6,7 +6,7 @@
   </div>
 
   <nav>
-    <a href="#" id="open-hamburger"><i class="fa fa-bars"></i><span> Open Menu</span></a>
+    <a href="#" id="open-hamburger"><i class="icon icon-bars"></i><span> Open Menu</span></a>
     <div>
       <ul id="main-nav" class="main">
         {{ $cur := . }}
@@ -17,7 +17,7 @@
 
       <ul id="social-nav" class="social">
         {{ range $.Site.Data.social.links }}
-        {{ if .nav }}<li><a href="{{ .url }}" title="{{ .name }}"><span>{{ .name }}</span><i class="fa fa-{{ .icon }}"></i></a></li>{{ end }}
+        {{ if .nav }}<li><a href="{{ .url }}" title="{{ .name }}"><span>{{ .name }}</span><i class="icon icon-{{ .icon }}"></i></a></li>{{ end }}
         {{ end }}
       </ul>
     </div>
