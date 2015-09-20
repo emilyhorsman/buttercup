@@ -17,4 +17,20 @@
     height: auto;
     z-index: 2;
   }
+
+  @include media-breakpoint-down(xs) {
+    span { display: none; }
+    display: none;
+    &.show {
+      display: block;
+      color: white;
+      line-height: 1;
+      top: 0;
+      left: auto !important;
+      right: 0;
+      padding: 1rem;
+      z-index: 9;
+      font-size: 3rem;
+    }
+  }
 }
