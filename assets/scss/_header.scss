@@ -113,6 +113,42 @@ header {
       }
     }
     #social-nav { float: right; }
+
+    @include media-breakpoint-down(xs) {
+      ul.main {
+        &.main li:first-child a {
+          margin-left: 0;
+        }
+
+        li {
+          display: block;
+          a {
+            display: block;
+            border-left: $nav-border-width solid transparent;
+          }
+
+          &.selected a,
+          a:hover {
+            border-left: $nav-border-width solid $blue;
+          }
+        }
+      }
+
+      ul.social {
+        li a {
+          font-size: 3rem;
+        }
+      }
+
+      ul li {
+        &.selected a,
+        a:hover {
+          border-bottom-width: 0;
+        }
+      }
+
+      #main-nav, #social-nav { float: none; }
+    }
   }
 
   > div {
