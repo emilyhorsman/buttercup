@@ -4,7 +4,7 @@ $header-font-size: 3rem;
 $header-color: $gray;
 $header-hover: black;
 header {
-  padding: 0 $content-padding;
+  padding: 1rem $content-padding;
   max-width: $content-width;
   margin: 0 auto;
   h1 {
@@ -27,6 +27,7 @@ header {
     list-style-type: none;
     padding: 0;
     font-size: 0;
+    margin-bottom: 0;
     li {
       display: inline-block;
       animation-name: fadeIn;
@@ -38,15 +39,21 @@ header {
       }
 
       &:after {
-        margin: 0 0.5rem;
         content: '-';
         color: darken($body-bg, 40%);
         font-size: $nav-font-size * 0.9;
       }
-      &:last-child:after { display: none; }
 
       a {
         font-size: $nav-font-size;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      &:first-child a { padding-left: 0; }
+      &:last-child {
+        &:after { display: none; }
+        a { padding-right: 0; }
       }
     }
   }
@@ -55,13 +62,16 @@ header {
     @include clearfix;
     h1 {
       float: left;
+      margin-bottom: 0;
     }
 
     nav {
       float: right;
+      $f: $nav-font-size * 0.75;
       ul li a {
-        font-size: $nav-font-size * 0.75;
-        line-height: $header-font-size;
+        font-size: $f;
+        padding-top: ($header-font-size - $f) / 2;
+        padding-bottom: ($header-font-size - $f) / 2;
       }
     }
   }
