@@ -19,7 +19,6 @@
   }
 
   @include media-breakpoint-down(xs) {
-    span { display: none; }
     display: none;
     &.show {
       display: block;
@@ -33,4 +32,8 @@
       font-size: 3rem;
     }
   }
+}
+
+@include media-breakpoint-down(lg) {
+  #scroll-to-top span { display: none; }
 }
