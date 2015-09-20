@@ -88,7 +88,8 @@ gulp.task('js:watch', function() { gulp.watch('./assets/js/**/*.js', ['js']); })
 gulp.task('html:minify', function() {
   gulp.src('../../public/**/*.html')
     .pipe($.htmlmin({
-      collapseWhitespace: true
+      collapseWhitespace: true,
+      conservativeCollapse: true
     }))
     .pipe(gulp.dest('../../public'));
 });
