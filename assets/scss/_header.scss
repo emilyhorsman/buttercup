@@ -7,6 +7,7 @@ $header-height: 6rem;
 $header-font-size: 2.5rem;
 $fg: white;
 $inner-padding: 2rem;
+$nav-border-width: 0.3rem;
 header {
   position: relative;
   background-color: $blue;
@@ -15,6 +16,10 @@ header {
 
   a {
     color: inherit; text-decoration: none;
+    &:hover {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 
   nav {
@@ -38,14 +43,23 @@ header {
       padding: 0;
       font-size: 0;
       li {
-
-        display: inline;
+        display: inline-block;
         color: $fg;
-        font-size: $nav-font-size;
-        line-height: $nav-height;
         margin: 0;
-        padding: 0 1rem;
-        &:first-child { padding-left: 0; }
+        $p: ($nav-height - $nav-font-size) / 2;
+        a {
+          display: inline-block;
+          font-size: $nav-font-size;
+          line-height: 1;
+          padding: $p 1rem ($p - $nav-border-width);
+        }
+
+        &:first-child { a { margin-left: -1rem; } }
+
+        &.selected a,
+        a:hover {
+          border-bottom: $nav-border-width solid $blue;
+        }
       }
 
       &.social li {
@@ -55,7 +69,7 @@ header {
       }
     }
 
-    #main-nav { float: left; }
+    #main-nav { float: left; li { margin-right: 1rem; } }
     #social-nav { float: right; }
   }
 
