@@ -23,6 +23,10 @@
     return (' ' + elm.className + ' ').indexOf(' ' + cls + ' ') > -1;
   },
 
+  viewportWidth: function() {
+    return document.documentElement.clientWidth;
+  },
+
   scrollY: function() { return window.pageYOffset || document.documentElement.scrollTop; }
   };
 })();

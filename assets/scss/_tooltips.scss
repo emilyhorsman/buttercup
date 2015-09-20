@@ -20,6 +20,7 @@ $arrow-size: 1rem;
     margin-left: $standard-tooltip-width * -0.5;
     text-align: center;
     border-radius: 2px;
+    z-index: 999;
 
     &:after, &:before {
       top: 100%;
@@ -34,6 +35,18 @@ $arrow-size: 1rem;
       border-top-color: $gray;
       border-width: $arrow-size;
       margin-left: $arrow-size * -0.5;
+    }
+
+    &.left {
+      &:before, &:after { left: 70%; }
+      left: 0;
+      margin-left: $standard-tooltip-width * -0.55;
+    }
+
+    &.right {
+      &:before, &:after { left: 30%; }
+      margin-left: -6rem;
+      right: 0;
     }
   }
 
