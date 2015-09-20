@@ -1,12 +1,15 @@
-$nav-font-size: 1.5rem;
+$nav-font-size: 2rem;
+$header-font-size: 3rem;
 $header-color: $gray;
 $header-hover: black;
 header {
   padding: 0 $content-padding;
-  width: $content-width;
+  max-width: $content-width;
   margin: 0 auto;
   h1 {
-    font-size: 3rem;
+    font-size: $header-font-size;
+    margin-bottom: 1rem;
+    line-height: 1;
     a:hover {
       text-decoration: none;
     }
@@ -25,6 +28,11 @@ header {
     font-size: 0;
     li {
       display: inline-block;
+      animation-name: fadeIn;
+      animation-duration: 0.5s;
+      animation-delay: 0.5s;
+      animation-fill-mode: both;
+      &:nth-last-child(2) { animation-delay: 1s; }
 
       &:after {
         margin: 0 0.5rem;
@@ -35,6 +43,21 @@ header {
 
       a {
         font-size: $nav-font-size;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    @include clearfix;
+    h1 {
+      float: left;
+    }
+
+    nav {
+      float: right;
+      ul li a {
+        font-size: $nav-font-size * 0.75;
+        line-height: $header-font-size;
       }
     }
   }
