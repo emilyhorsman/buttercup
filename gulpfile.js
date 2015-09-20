@@ -85,6 +85,14 @@ gulp.task('js:uglify', ['js'], function() {
 gulp.task('js', ['js:lint', 'js:concatenate']);
 gulp.task('js:watch', function() { gulp.watch('./assets/js/**/*.js', ['js']); });
 
+gulp.task('html:minify', function() {
+  gulp.src('../../public/**/*.html')
+    .pipe($.htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(gulp.dest('../../public'));
+});
+
 gulp.task('all', ['sass', 'js']);
 gulp.task('watch', ['bower', 'sass:watch', 'js:watch']);
 gulp.task('default', ['all']);
