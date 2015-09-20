@@ -16,8 +16,9 @@
       </ul>
 
       <ul id="social-nav" class="social">
-        <li><a href="#"><i class="fa fa-twitter"></i><span>@emilymhorsman</span></a></li>
-        <li><a href="#"><i class="fa fa-github-alt"></i><span>GitHub</span></a></li>
+        {{ range $.Site.Data.social.links }}
+        {{ if .nav }}<li><a href="{{ .url }}" title="{{ .name }}"><i class="fa fa-{{ .icon }}"></i><span>{{ .name }}</span></a></li>{{ end }}
+        {{ end }}
       </ul>
     </div>
   </nav>
