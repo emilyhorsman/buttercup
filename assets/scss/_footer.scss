@@ -1,4 +1,4 @@
-$footer-height: 6rem;
+$footer-height: 4rem;
 
 html {
   position: relative;
@@ -16,7 +16,7 @@ footer {
   width: 100%;
   height: $footer-height;
   font-size: 0.8em;
-  background: $gray;
+  background: $blue;
   color: white;
   overflow: hidden;
   box-shadow: inset 1px 0 3px black;
@@ -25,18 +25,21 @@ footer {
     color: lighten($link-color, 30%);
   }
 
-  > div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: $content-width;
-
+  div.left {
+    float: left;
+    width: 75%;
     p {
-      float: left;
-      margin: 0;
-      max-width: 60%;
-      overflow: break-word;
+      line-height: $footer-height;
     }
+  }
+
+  div.right {
+    float: right;
+    width: 25%;
+  }
+
+  > div {
+    max-width: $content-width;
+    margin: 0 auto;
   }
 }
