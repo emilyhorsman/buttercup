@@ -34,6 +34,7 @@ gulp.task('sass', function() {
       compatibility: 'ie8',
       processImport: false,
     })))
+    .pipe($.size({ showFiles: true }))
     .pipe(gulp.dest('./static/css'));
 });
 gulp.task('sass:watch', function() { gulp.watch('./assets/scss/**/*.scss', ['sass']); });
@@ -64,6 +65,7 @@ gulp.task('js:concatenate', function() {
   gulp.src(js_src.concat('./assets/js/**/*.js'))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
       .pipe($.concat('main.js'))
+      .pipe($.size({ showFiles: true }))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
     .pipe(gulp.dest('./static/js'));
 });
