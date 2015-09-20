@@ -8,6 +8,7 @@ $header-font-size: 2.5rem;
 $fg: white;
 $inner-padding: 2rem;
 $nav-border-width: 0.3rem;
+$nav-fade-time: 0.4s;
 body {
   padding-top: $nav-height + $header-height + $content-padding;
 }
@@ -77,7 +78,18 @@ header {
       }
     }
 
-    #main-nav { float: left; li { margin-right: 1rem; } }
+    #main-nav {
+      float: left;
+      li {
+        margin-right: 1rem;
+        animation-name: fadeIn;
+        animation-duration: $nav-fade-time;
+        animation-fill-mode: both;
+        @for $i from 2 through 6 {
+          &:nth-child(#{$i}) { animation-delay: ($i - 1) * $nav-fade-time; }
+        }
+      }
+    }
     #social-nav { float: right; }
   }
 
