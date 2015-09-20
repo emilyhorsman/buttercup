@@ -104,12 +104,6 @@ header {
       float: left;
       li {
         margin-right: 1rem;
-        animation-name: fadeIn;
-        animation-duration: $nav-fade-time;
-        animation-fill-mode: both;
-        @for $i from 2 through 6 {
-          &:nth-child(#{$i}) { animation-delay: ($i - 1) * $nav-fade-time; }
-        }
       }
     }
     #social-nav { float: right; }
@@ -193,6 +187,19 @@ header {
         margin-left: 0.5rem;
         vertical-align: top;
         font-size: $nav-font-size * 0.9;
+      }
+    }
+  }
+}
+
+body.home {
+  #main-nav {
+    li {
+      animation-name: fadeIn;
+      animation-duration: $nav-fade-time;
+      animation-fill-mode: both;
+      @for $i from 2 through 6 {
+        &:nth-child(#{$i}) { animation-delay: ($i - 1) * $nav-fade-time; }
       }
     }
   }
