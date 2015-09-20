@@ -60,12 +60,14 @@ header {
           padding: $p 1rem ($p - $nav-border-width);
         }
 
-        &:first-child { a { margin-left: -1rem; } }
-
         &.selected a,
         a:hover {
           border-bottom: $nav-border-width solid $blue;
         }
+      }
+
+      &.main li:first-child a {
+        margin-left: -1rem;
       }
 
       &.social li {
@@ -95,6 +97,9 @@ header {
     }
 
     > div {
+      animation-name: bounceInDown;
+      animation-duration: 1s;
+      animation-fill-mode: both;
       float: right;
       margin-top: 1.5rem;
       margin-right: 2rem;
@@ -104,6 +109,18 @@ header {
       background-size: cover;
       border-radius: 50%;
       border: 0.4rem solid $blue;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  #social-nav {
+    li:first-child {
+      span {
+        margin-left: 0.5rem;
+        vertical-align: top;
+        font-size: $nav-font-size * 0.9;
+      }
     }
   }
 }

@@ -13,24 +13,6 @@
 @import "footer";
 @import "pride";
 
-#logo {
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-
-  width: 15vh;
-  height: 15vh;
-  max-width: 12rem;
-  max-height: 12rem;
-  border-radius: 50%;
-  margin: 2vh auto;
-  border: 4px solid #0B0D0B;
-
-  animation-name: bounceInDown;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-
 main {
   background: white;
   max-width: $content-width;
