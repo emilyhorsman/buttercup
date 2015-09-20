@@ -97,6 +97,11 @@ header {
         span {
           font-size: 0;
         }
+
+        a {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
       }
     }
 
@@ -184,7 +189,7 @@ header {
   #social-nav {
     li:first-child {
       span {
-        margin-left: 0.5rem;
+        margin-right: 0.5rem;
         vertical-align: top;
         font-size: $nav-font-size * 0.9;
       }

@@ -17,7 +17,7 @@
 
       <ul id="social-nav" class="social">
         {{ range $.Site.Data.social.links }}
-        {{ if .nav }}<li><a href="{{ .url }}" title="{{ .name }}"><i class="fa fa-{{ .icon }}"></i><span>{{ .name }}</span></a></li>{{ end }}
+        {{ if .nav }}<li><a href="{{ .url }}" title="{{ .name }}"><span>{{ .name }}</span><i class="fa fa-{{ .icon }}"></i></a></li>{{ end }}
         {{ end }}
       </ul>
     </div>
