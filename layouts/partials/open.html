@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ $.Site.Title }}</title>
+    <title>{{ if ne .Title "Home" }}{{ .Title }} | {{ end }}{{ $.Site.Title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{ range $.Site.Data.assets.css }}
     <link href="/css/{{ .src }}" rel="stylesheet">
