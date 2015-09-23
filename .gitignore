@@ -1,5 +1,6 @@
 assets/vendor
 node_modules
+themes/
 static/images/profile.jpg
 static/css
 static/js
