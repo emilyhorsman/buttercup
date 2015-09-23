@@ -23,9 +23,39 @@ main {
   .bleed {
     margin-left: -$content-padding;
     margin-right: -$content-padding;
+
+    img {
+      width: 100%;
+    }
   }
 
   img {
-    width: 100%;
+    margin: 0 auto;
+  }
+
+  p {
+    margin-bottom: 2.5rem;
+  }
+
+  figure {
+    text-align: center;
+    font-size: $font-size-xs;
+    padding: 1rem 10%;
+
+    img {
+      max-width: 100%;
+    }
+
+    figcaption {
+      padding-top: 1rem;
+    }
+  }
+
+  blockquote {
+    font-size: $font-size-sm;
+    border-left: 4px solid #aaa;
+    p {
+      margin-left: 3rem;
+    }
   }
 }
