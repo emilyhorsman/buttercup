@@ -4,6 +4,13 @@
 
 <main id="top">
   {{ .Content }}
+
+  <h2>Posts</h2>
+  <ol>
+    {{ range where $.Data.Pages "Type" "post" }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ol>
 </main>
 
 {{ partial "footer.html" . }}

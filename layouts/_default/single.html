@@ -2,7 +2,18 @@
 {{ partial "header.html" . }}
 
 <main id="top">
+  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+  <div class="byline">Published on {{ .Date.Format "Jan 2 2006" }}, ~{{ .WordCount }} words</div>
+
   {{ .Content }}
+
+  {{ if ne .Type "page" }}
+  <hr />
+
+  <p>
+    Comments? Questions? Concerns? Send me a tweet <a href="https://twitter.com/{{ $.Site.Params.twitter }}">@{{ $.Site.Params.twitter }}</a>
+  </p>
+  {{ end }}
 </main>
 
 {{ partial "footer.html" . }}
