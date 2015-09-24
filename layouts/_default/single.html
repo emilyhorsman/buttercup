@@ -2,8 +2,10 @@
 {{ partial "header.html" . }}
 
 <main id="top">
+  {{ if ne .Type "page" }}
   <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   <div class="byline">Published on {{ .Date.Format "Jan 2 2006" }}, ~{{ .WordCount }} words</div>
+  {{ end }}
 
   {{ .Content }}
 
