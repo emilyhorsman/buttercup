@@ -37,18 +37,17 @@ gulp.task('bower', function() {
 });
 
 gulp.task('sass', function(callback) {
-  gulp.src('./assets/scss/**/*.scss')
+  return gulp.src('./assets/scss/**/*.scss')
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
       .pipe($.sass({
         includePaths: './assets/vendor',
       }))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
-    .pipe(gulp.dest('./static/css'))
-    .on('end', callback);
+    .pipe(gulp.dest('./static/css'));
 });
 
 gulp.task('sass:minify', ['sass'], function() {
-  gulp.src('./static/css/*.css')
+  return gulp.src('./static/css/*.css')
     .pipe($.minifyCss({
       compatibility: 'ie8',
       processImport: false,
@@ -60,7 +59,7 @@ gulp.task('sass:watch', function() { gulp.watch('./assets/scss/**/*.scss', ['sas
 
 
 gulp.task('js:lint', function() {
-  gulp.src('./assets/js/**/*.js')
+  return gulp.src('./assets/js/**/*.js')
     .pipe($.jshint({
       browser: true
     }))
@@ -68,16 +67,15 @@ gulp.task('js:lint', function() {
 });
 
 gulp.task('js:concatenate', function(callback) {
-  gulp.src(js_src.concat('./assets/js/**/*.js'))
+  return gulp.src(js_src.concat('./assets/js/**/*.js'))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.init()))
       .pipe($.concat('main.js'))
     .pipe($.gif(opts.sourcemaps, $.sourcemaps.write('.')))
-    .pipe(gulp.dest('./static/js'))
-    .on('end', callback);
+    .pipe(gulp.dest('./static/js'));
 });
 
 gulp.task('js:uglify', ['js'], function() {
-  gulp.src('./static/js/*.js')
+  return gulp.src('./static/js/*.js')
     .pipe($.uglify())
     .pipe(gulp.dest('./static/js'))
     .pipe($.size({ showFiles: true }));
