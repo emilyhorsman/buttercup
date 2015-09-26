@@ -13,4 +13,4 @@
     {{ end }}
   </head>
 
-  <body class='{{ lower .Title }}' onload='load()'>
+  <body {{ if eq .Type "page" }}class='{{ lower .Title }}' {{ end }}onload='load()'>
