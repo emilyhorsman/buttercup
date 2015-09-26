@@ -83,6 +83,11 @@ gulp.task('js:uglify', ['js'], function() {
 gulp.task('js', ['js:lint', 'js:concatenate']);
 gulp.task('js:watch', function() { gulp.watch('./assets/js/**/*.js', ['js']); });
 
+gulp.task('clean', function() {
+  return gulp.src([ './static/js/', './static/css/' ])
+    .pipe($.clean());
+});
+
 gulp.task('all', ['sass', 'js']);
 gulp.task('watch', ['bower', 'sass:watch', 'js:watch']);
 gulp.task('default', ['all']);
