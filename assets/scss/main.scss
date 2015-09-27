@@ -13,6 +13,34 @@
 @import "footer";
 @import "pride";
 
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/fonts/Open-Sans-300/Open-Sans-300.eot');
+  src: url('/fonts/Open-Sans-300/Open-Sans-300.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Light'),
+       local('Open-Sans-300'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.woff2') format('woff2'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.woff') format('woff'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.ttf') format('truetype'),
+       url('/fonts/Open-Sans-300/Open-Sans-300.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-style: bold;
+  src: url('/fonts/Open-Sans-600/Open-Sans-600.eot');
+  src: url('/fonts/Open-Sans-600/Open-Sans-600.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Semibold'),
+       local('Open-Sans-600'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.woff2') format('woff2'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.woff') format('woff'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.ttf') format('truetype'),
+       url('/fonts/Open-Sans-600/Open-Sans-600.svg#OpenSans') format('svg');
+}
+
 main {
   background: white;
   max-width: $content-width;
