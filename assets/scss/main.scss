@@ -105,7 +105,7 @@ main {
 // fixed menu.
 $anchor-offset: $nav-height + $header-height + 1rem;
 article {
-  h1, h2, h3, h4, h5, h6 {
+  h2, h3, h4, h5, h6 {
     &:before {
       content: '';
       display: block;
@@ -115,6 +115,10 @@ article {
       margin-top: -$anchor-offset;
     }
   }
+
+  h1 {
+    margin: 0;
+  }
 }
 
 .updates {
@@ -123,6 +127,7 @@ article {
   ul {
     list-style-type: none;
     padding: 0;
+    margin-left: 0.1em;
   }
 
   li:after {
