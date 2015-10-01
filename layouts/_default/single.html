@@ -5,7 +5,10 @@
   <article>
     {{ if ne .Type "page" }}
     <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
-    <div class="byline">Published on {{ .Date.Format "Jan 2 2006" }}, ~{{ .WordCount }} words</div>
+    <div class="byline">
+      Published on {{ .Date.Format "Jan 2 2006" }}, ~{{ .WordCount }} words
+      {{ partial "updates.html" .Params.updates }}
+    </div>
     {{ end }}
 
     {{ .Content }}

@@ -1,0 +1,10 @@
+{{ if . }}
+<div class="updates">
+  Updates added on:
+  <ul>
+  {{ range . }}
+    <li><a href="#{{ .heading }}">{{ dateFormat "Jan 2 2006" .date }}</a></li>
+  {{ end }}
+  </ul>
+</div>
+{{ end }}

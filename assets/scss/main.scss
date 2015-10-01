@@ -99,6 +99,38 @@ main {
   }
 }
 
+// Clicking on a hash anchor to skip to a header in an article will hide much
+// of the content under the fixed menu. This is a fix for that which places a
+// pseudo element before the heading text to increase its height and offset the
+// fixed menu.
+$anchor-offset: $nav-height + $header-height + 1rem;
+article {
+  h1, h2, h3, h4, h5, h6 {
+    &:before {
+      content: '';
+      display: block;
+      position: relative;
+      width: 0;
+      height: $anchor-offset;
+      margin-top: -$anchor-offset;
+    }
+  }
+}
+
+.updates {
+  ul, li { display: inline; }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li:after {
+    content: ', ';
+  }
+  li:last-child:after { display: none; }
+}
+
 body.home {
   main ol {
     list-style-type: none;
