@@ -1,0 +1,14 @@
+.table-of-contents nav {
+  > ul,
+  > ul > li > ul {
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  > ul {
+    font-size: 0.9em;
+  }
+}

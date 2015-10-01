@@ -2,14 +2,22 @@
 {{ partial "header.html" . }}
 
 <main id="top">
-  {{ if ne .Type "page" }}
-  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-  <div class="byline">Published on {{ .Date.Format "Jan 2 2006" }}, ~{{ .WordCount }} words</div>
-  {{ end }}
+  <article>
+    {{ if ne .Type "page" }}
+    <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+    <div class="byline">Published on {{ .Date.Format "Jan 2 2006" }}, ~{{ .WordCount }} words</div>
+    {{ end }}
 
-  {{ .Content }}
+    {{ .Content }}
+  </article>
 
   {{ if ne .Type "page" }}
+
+  <div class="table-of-contents">
+    <b>Table of Contents</b>
+    {{ .TableOfContents }}
+  </div>
+
   <hr />
 
   <p>
