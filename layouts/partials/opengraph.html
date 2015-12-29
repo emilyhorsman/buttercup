@@ -1,11 +1,15 @@
 <meta property="og:title" content="{{ .Title }}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ .Permalink }}" />
+{{ if $.Site.Params.opengraph_image_enabled }}
 <meta property="og:image" content="{{ $.Site.Params.opengraph_image | absURL }}" />
+{{ end }}
 <meta property="og:locale" content="{{ $.Site.LanguageCode }}" />
 <meta property="og:description" content="{{ .Summary }}" />
 <meta property="og:site_name" content="{{ $.Site.Title }}" />
+{{ if $.Site.Params.opengraph_image_enabled }}
 <meta property="twitter:image" content="{{ $.Site.Params.opengraph_image | absURL }}" />
+{{ end }}
 <meta property="twitter:card" content="summary">
 <meta property="twitter:site" content="@{{ $.Site.Params.twitter }}">
 <meta property="twitter:creator" content="@{{ $.Site.Params.twitter }}">
