@@ -6,5 +6,8 @@
     <script src="/js/{{ .src }}"></script>
   {{ end }}
 {{ end }}
-{{ partial "analytics.html" . }}
+
+{{ if $.Site.Params.analytics_enabled }}
+  {{ partial "analytics.html" . }}
+{{ end }}
 </body></html>
