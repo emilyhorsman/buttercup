@@ -159,3 +159,9 @@ code {
   font-size: 0.9em;
   background-color: darken($body-bg, 5%);
 }
+
+.columns.-three ul {
+          columns: 3;
+  -webkit-columns: 3;
+     -moz-columns: 3;
+}
